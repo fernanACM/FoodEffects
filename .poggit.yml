@@ -1,0 +1,11 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/fernanACM/FoodEffects
+build-by-default: true
+branches:
+- master
+projects:
+  FoodEffects:
+    path: ""
+    icon: icon.png
+    lint:
+      phpstan: false
+...
