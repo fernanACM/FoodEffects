@@ -15,20 +15,28 @@
 
 namespace Xenophilicy\FoodEffects;
 
-use pocketmine\entity\{Effect, EffectInstance};
-use pocketmine\event\Listener;
-use pocketmine\event\player\{PlayerInteractEvent, PlayerItemConsumeEvent};
+use pocketmine\Server;
+use pocketmine\player\Player;
+
 use pocketmine\plugin\PluginBase;
+
+use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerItemConsumeEvent;
+use pocketmine\event\player\PlayerInteractEvent;
+
+use pocketmine\entity\effect\Effect;
+use pocketmine\data\bedrock\EffectIdMap;
+use pocketmine\entity\effect\EffectInstance;
 
 class FoodEffects extends PluginBase implements Listener{
 
-    private const CONFIG_VERSION = "1.2.0";
+    private const CONFIG_VERSION = "1.3.0";
 
     private static $settings;
     private static $consumables;
     private static $nonConsumables;
 
-    public function onEnable(){
+    public function onEnable(): void{
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->saveDefaultConfig();
         self::$settings = $this->getConfig()->getAll();
@@ -101,18 +109,18 @@ class FoodEffects extends PluginBase implements Listener{
     public function onItemConsume(PlayerItemConsumeEvent $event){
         $player = $event->getPlayer();
         $item = $event->getItem();
-        $idFull = $item->getId() . ":" . $item->getDamage();
-        if(!(round($player->getFood()) < 20) && self::$settings["Require-Hunger"]) return;
+        $idFull = $item->getId() . ":" . $item->getMeta();
+        if(!(round($player->getHungerManager()->getFood()) < 20) && self::$settings["Require-Hunger"]) return;
         foreach(self::$consumables as $key => $values){
             $effects = $values["Effects"];
             $name = isset($values["Name"]) ? $values["Name"] : false;
             if($name && $item->getCustomName() !== $name) continue;
             if($idFull !== (string)$key) continue;
-            if(!self::$settings["Affects-Hunger"]) $event->setCancelled();
+            if(!self::$settings["Affects-Hunger"]) $event->cancel();
             foreach($effects as $effValues){
-                $effectInstance = new EffectInstance(Effect::getEffect($effValues[0]));
+                $effectInstance = new EffectInstance(EffectIdMap::getInstance()->fromId($effValues[0]));
                 $duration = $effValues[2] > 0 ? $effValues[2] * 20 : 2147483647;
-                $player->addEffect($effectInstance->setAmplifier($effValues[1])->setDuration($duration));
+                $player->getEffects()->add($effectInstance->setAmplifier($effValues[1])->setDuration($duration));
             }
         }
     }
@@ -120,7 +128,7 @@ class FoodEffects extends PluginBase implements Listener{
     public function onItemInteract(PlayerInteractEvent $event){
         $player = $event->getPlayer();
         $item = $player->getInventory()->getItemInHand();
-        $idFull = $item->getId() . ":" . $item->getDamage();
+        $idFull = $item->getId() . ":" . $item->getMeta();
         foreach(self::$nonConsumables as $key => $values){
             $effects = $values["Effects"];
             $name = isset($values["Name"]) ? $values["Name"] : false;
@@ -128,9 +136,9 @@ class FoodEffects extends PluginBase implements Listener{
             if($idFull !== (string)$key) continue;
             $player->getInventory()->setItemInHand($item->pop());
             foreach($effects as $effValues){
-                $effectInstance = new EffectInstance(Effect::getEffect($effValues[0]));
+                $effectInstance = new EffectInstance(EffectIdMap::getInstance()->fromId($effValues[0]));
                 $duration = $effValues[2] > 0 ? $effValues[2] * 20 : 2147483647;
-                $player->addEffect($effectInstance->setAmplifier($effValues[1])->setDuration($duration));
+                $player->getEffects()->add($effectInstance->setAmplifier($effValues[1])->setDuration($duration));
             }
         }
     }
