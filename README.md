@@ -7,6 +7,9 @@
 
 ![icon-foodeffects](https://user-images.githubusercontent.com/83558341/178093862-6ac32c03-49da-4b29-b18c-421d8ca1e4be.png)
 
+### 💡 Suggestion
+You can use [RenameItems](https://poggit.pmmp.io/p/RenameItems/3.0) for custom items.
+
 ### 📢 Information
 With this plugin, you are able to assign different effects to items so that when a player interacts with or consumes that item, they are given the effect for a set duration at a set effect level! The format along with some examples for the item listing can be found in both the *config.yml* file and down below if you ever get confused. If you would like a video example of the plugin in action, click [here](https://youtu.be/SbITnMk8jVE)
 
