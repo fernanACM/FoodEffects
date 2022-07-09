@@ -1,16 +1,16 @@
 # FoodEffects
 [![](https://poggit.pmmp.io/shield.state/FoodEffects-PM4)](https://poggit.pmmp.io/p/FoodEffects-PM4)
-[![HitCount](http://hits.dwyl.io/Xenophilicy/FoodEffects.svg)](http://hits.dwyl.io/Xenophilicy/FoodEffects)
-[![Discord Chat](https://img.shields.io/discord/490677165289897995.svg)](https://discord.gg/hNVehXe)
 
-# [![Xenophilicy](http://file.xenoservers.net/Resources/GitHub-Resources/foodeffects.png)]()
+[![](https://poggit.pmmp.io/shield.api/FoodEffects-PM4)](https://poggit.pmmp.io/p/FoodEffects-PM4)
 
-## Information
+**The best food supplement with positive/negative effects. Enhance your abilities with FoodEffects, or damage your enemy with food with negative effects.**
+
+![icon-foodeffects](https://user-images.githubusercontent.com/83558341/178093862-6ac32c03-49da-4b29-b18c-421d8ca1e4be.png)
+
+### 📢 Information
 With this plugin, you are able to assign different effects to items so that when a player interacts with or consumes that item, they are given the effect for a set duration at a set effect level! The format along with some examples for the item listing can be found in both the *config.yml* file and down below if you ever get confused. If you would like a video example of the plugin in action, click [here](https://youtu.be/SbITnMk8jVE)
 
-### [Click here to download FoodEffects from Poggit](https://poggit.pmmp.io/p/FoodEffects/)
-
-## Item Formatting
+### 🍎 Item Formatting
 ```yaml
 "Item-ID:Item-Damage:
     "Name": "Custom-Name"
@@ -20,7 +20,7 @@ With this plugin, you are able to assign different effects to items so that when
         - [Effect-ID,Effect-Amplifier,Effect-Duration]
 ```
 
-## Item Listing Example
+### 🍗 Item Listing Example
 Desired configuration:
 * When steak(ID = 364) is consumed, give blindness(ID = 15) level 1 for 10 seconds and strength(ID = 5) level 2 for 30 seconds
 * When an apple(ID = 260) is consumed, give speed(ID = 1) level 3 for 15 seconds and night vision(ID = 16) level 1 infinitely(0)
@@ -51,11 +51,14 @@ Non-Consumables:
     "Effects":
       - [2,1,5]
 ```
+### 📞 Contact 
+| Redes | Tag | Link |
+|-------|-------------|------|
+| YouTube | fernanACM | [YouTube](https://www.youtube.com/channel/UC-M5iTrCItYQBg5GMuX5ySw) | 
+| Discord | fernanACM#5078 | [Discord](https://discord.gg/YyE9XFckqb) |
+| GitHub | fernanACM | [GitHub](https://github.com/fernanACM)
+| Poggit | fernanACM | [Poggit](https://poggit.pmmp.io/ci/fernanACM)
+****
 
-***
-
-## Dependencies
-**DevTools → https://github.com/pmmp/PocketMine-DevTools** *(If you're running the plugin from source)*
-
-## Credits
+### ✔ Credits
 * [Xenophilicy](https://github.com/Xenophilicy/)
