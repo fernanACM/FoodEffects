@@ -11,7 +11,7 @@
 #                                         $$ |                                      /  \__$$ |
 #                                         $$ |                                      $$    $$/ 
 #                                         $$/                                        $$$$$$/
-VERSION: "1.2.0" # Internal use only
+VERSION: "1.3.0" # Internal use only
 
 # Choose if a player can consume food items even if their hunger bar is full
 # Accepted values are true or false
